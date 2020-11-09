@@ -1,10 +1,10 @@
+import { init } from './init.js'; 
+
 const FactoryObserver = (fn) => ({
     update: fn
 })
 
 export const updateStopWatch = FactoryObserver((state) => {   
-    const seconds = document.querySelector("[data-sec]")
-    const milliseconds = document.querySelector("[data-msec]")
 
     const ms = state.milliseconds
     const s = state.seconds
@@ -19,6 +19,6 @@ export const updateStopWatch = FactoryObserver((state) => {
         updatedS += `0${s}`
     } else updatedS = s
 
-    milliseconds.textContent = updatedMs
-    seconds.textContent = updatedS
-})
+    init(updatedS, updatedMs)
+   
+}) 

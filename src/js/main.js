@@ -2,14 +2,11 @@ import '../css/main.css'
 import { FactoryWatch } from "./stopWatch.js";
 import { updateStopWatch } from "./observers.js";
 import { startButton, stopButton, resetButton } from './listeners.js';
+import { init } from './init.js';
 
-function init() {
-    const seconds = document.querySelector("[data-sec]")
-    const milliseconds = document.querySelector("[data-msec]")
-    milliseconds.textContent = '00'
-    seconds.textContent = '00'
-}
-const watch = FactoryWatch([
+(function() {
+
+    const watch = FactoryWatch([
     updateStopWatch
 ])
 
@@ -29,7 +26,9 @@ stopButton.addEventListener('click', function() {
 resetButton.addEventListener('click', function() {
     clearInterval(watchInterval)
     watch.reset()
-    init()
+    init('00', '00')
 })
 
-init()
+init('00', '00')
+
+})()
